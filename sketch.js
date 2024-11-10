@@ -3,5 +3,5 @@ function setup() {
   myCanvas.parent("#my-p5-sketch"); //esto es un id por eso se utiliza #
 }
 function draw() {
-  background(50, 200, 180);
+  background(149, 158, 204);
 }
