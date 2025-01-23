@@ -1,145 +1,64 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+body {
+  margin: 0; /* Elimina márgenes por defecto */
+  padding: 0;
+  font-family: "Urbanist", sans-serif;
+  color: #ffffff;
+  display: flex; /* Utiliza flexbox para centrar el contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: flex-start; /* Opcional: Ajusta la posición vertical si es necesario */
+  min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la pantalla */
+}
+
+html {
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-.uniquifier {
   font-family: "Urbanist", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-html,
-body {
-  background-color: #ededff;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-#my-p5-sketch {
-  position: absolute;
-  z-index: 0;
+  background: #1c1c1c;
+  color: #ffffff;
+  overflow: hidden;
 }
 
 h1 {
-  color: #262654;
-  font-family: "Urbanist", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-  font-size: 3rem;
-}
-
-.main {
-  position: relative;
-  z-index: 1;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 25px 0;
 }
 
 .container {
-  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
 }
 
-a {
-  color: #ededff;
-  text-decoration: none;
-  border: 1px solid #262654;
-  border-radius: 10px;
-  display: block;
-  padding: 1rem;
-  text-align: center;
-  font-size: 2rem;
+.botonera {
+  margin: 10px;
 }
 
 .boton {
-  margin-block: 2rem;
+  background: #7380c5;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin: 5px;
+  text-align: center;
+  transition: all 0.3s;
 }
 
-a:hover {
-  background-color: #363674cc;
-  transform: scale(1.1);
-  box-shadow: 0px 5px 20px black;
-  border: 1px solid black;
+.boton a {
+  text-decoration: none;
+  color: #0c0c0c;
+  font-weight: lighter;
+  font-size: large;
+}
+
+.boton:hover {
+  background: #ededfe;
+  transform: scale(1.2);
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* El canvas queda detrás del contenido */
 }
