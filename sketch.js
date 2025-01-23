@@ -10,7 +10,7 @@ function setup() {
   colorVioleta = color(97, 117, 188);
 }
 function draw() {
-  background(64,66,64);
+  background(237,237,254);
 
   // Crear nuevas partículas aleatoriamente
   if (frameCount % 5 == 0) {
