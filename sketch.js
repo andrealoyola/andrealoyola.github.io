@@ -1,49 +1,45 @@
-let particulas = [];
-let colorLila;
-let colorVioleta;
-let hexagonos;
+let circles = [];
 
 function setup() {
-  let myCanvas = createCanvas(windowWidth, windowHeight);
-  myCanvas.parent("#my-p5-sketch"); //esto es un id por eso se utiliza #
-   colorLila = color(221, 229, 240);
-  colorVioleta = color(97, 117, 188);
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent("canvas-container"); // Vincula el canvas al contenedor con ID "canvas-container"
+
+  // Crear círculos con propiedades aleatorias
+  for (let i = 0; i < 50; i++) {
+    circles.push({
+      x: random(width),
+      y: random(height),
+      radius: random(10, 20),
+      speedX: random(-2, 2),
+      speedY: random(-2, 2),
+      color: color(random(255), random(255), random(221, 229, 240), 50),
+    });
+  }
 }
+
 function draw() {
-  background(237,237,254);
+  clear(); // Limpia el fondo para mantener las animaciones suaves
+  noStroke();
 
-  // Crear nuevas partículas aleatoriamente
-  if (frameCount % 5 == 0) {
-    if (random() < 0.5) {
-      particulas.push(new ParticulaVioleta(random(width), random(height)));
-    } else {
-      particulas.push(new ParticulaLila(random(width), random(height)));
+  // Dibujar y animar los círculos
+  for (let circle of circles) {
+    fill(circle.color);
+    ellipse(circle.x, circle.y, circle.radius * 2);
+
+    // Mover los círculos
+    circle.x += circle.speedX;
+    circle.y += circle.speedY;
+
+    // Rebotar en los bordes
+    if (circle.x - circle.radius < 0 || circle.x + circle.radius > width) {
+      circle.speedX *= -1;
+    }
+    if (circle.y - circle.radius < 0 || circle.y + circle.radius > height) {
+      circle.speedY *= -1;
     }
   }
+}
 
-  // Actualizar y mostrar todas las partículas
-  for (let i = particulas.length - 1; i >= 0; i--) {
-    particulas[i].update();
-    particulas[i].display();
-
-    // Eliminar la partícula si se desvanece
-    if (particulas[i].termina()) {
-      particulas.splice(i, 1);
-    }
-  }
-
-  if (particulas.length > 1) {
-    // Asegúrate de que haya al menos dos partículas
-    for (let i = 0; i < particulas.length - 1; i++) {
-      stroke(236, 240, 252, 80); // Color de la línea
-      strokeWeight(2);
-      drawingContext.setLineDash([5, 5]);
-      line(
-        particulas[i].x,
-        particulas[i].y,
-        particulas[i + 1].x,
-        particulas[i + 1].y
-      );
-    }
-  }
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight); // Ajustar canvas al redimensionar ventana
 }
